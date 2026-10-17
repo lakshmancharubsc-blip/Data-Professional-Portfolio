@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science Skills</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f9;
+    color: #333;
+}
+
+/* Skills Section */
+.skills-section {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.skills-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #444;
+}
+
+/* Skills Container */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Individual Skill Card */
+.skill-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 150px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 15px;
+}
+
+.skill-card h3 {
+    font-size: 1.2em;
+    color: #222;
+}
+
+/* Hover Effect */
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+</style>
+<body>
+    <section class="skills-section">
+        <h1>Data Science Skills</h1>
+        <div class="skills-container">
+            <div class="skill-card">
+                <img src="icons/python.svg" alt="Python Icon">
+                <h3>Python</h3>
+            </div>
+            <div class="skill-card">
+                <img src="icons/numpy.svg" alt="NumPy Icon">
+                <h3>NumPy</h3>
+            </div>
+            <div class="skill-card">
+                <img src="icons/pandas.svg" alt="Pandas Icon">
+                <h3>Pandas</h3>
+            </div>
+            <div class="skill-card">
+                <img src="icons/matplotlib.svg" alt="Matplotlib Icon">
+                <h3>Matplotlib</h3>
+            </div>
+            <div class="skill-card">
+                <img src="icons/scikit-learn.svg" alt="Scikit-learn Icon">
+                <h3>Scikit-learn</h3>
+            </div>
+            <div class="skill-card">
+                <img src="icons/tensorflow.svg" alt="TensorFlow Icon">
+                <h3>TensorFlow</h3>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,964 @@
+<!DOCTYPE HTML>
+<!--
+	Tessellate by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Data Science Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+    <style>
+        /* Section styles */
+        #header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        /* Card container */
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            border: 2px solid white;
+            border-radius: 15px;
+            padding: 20px;
+            width: 60%;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.066);
+            box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+        }
+        .card-about{
+            width: 80%;
+            height: 450px;
+            margin: 0  170px;
+            background-color: #adaaaa3b;
+        }
+
+
+            .image-container {
+                flex-shrink: 0;
+            margin-left: 130px;
+            margin-right: 50px;
+            width: 250px;
+            height: 300px;
+            background-image: url('images/img1.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            border: 2px solid white;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+                position: relative; /* Optional: For positioning child elements */
+                overflow: hidden; /* Ensures no content spills out */
+            }
+
+            .profile-photo {
+                width: 100%;
+                height: 100%;
+                object-fit: cover; /* Ensures the image covers the container */
+                object-position: center; /* Centers the image */
+            }
+
+        /* Text content */
+        .text-content header h2 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .text-content header b {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            padding: 20px 20px;
+        }
+
+        .text-content header a {
+            text-decoration: none;
+            color: #FFD700;
+        }
+
+        /* Button styling */
+        .text-content footer a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: white;
+            color: black;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+
+        .text-content footer a:hover {
+            background: #FFD700;
+            color: black;
+        }
+
+        /* Navbar container */
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            float: left;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        /* Navbar links */
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        /* Hover effect for links */
+        .navbar a:hover {
+            color: #FFD700;
+        }
+
+
+        /* Responsive menu for small screens */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar a {
+                margin: 5px 0;
+            }
+        }
+        /* Dropdown Menu Styling */
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 200px;
+            z-index: 1;
+            top: 100%;
+            right: -15px;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            border-top: 1px solid #555;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+          
+                /* About Icon Styling */
+            .icon-container {
+            flex-shrink: 0;
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Text Content */
+        .about-text-content {
+            flex-grow: 1;
+        }
+
+        .about-text-content h1 {
+            margin-right: 150px;
+            font-size: 2rem;
+            color: black;
+        }
+
+        .about-text-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .about-text-content a {
+            color: #FFD700;
+            text-decoration: none;
+        }
+
+        .projects-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* flex-wrap: wrap; */
+            gap: 130px;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .project-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* width: 45%; Each card takes 45% of the row */
+            box-sizing: border-box;
+            flex: 1 1 calc(33.33% - 30px);
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.066);
+            border-radius: 15px;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            height: 480px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            transition: box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card img {
+            position: absolute; /* Fix the image at the top */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
+            width: 100%;
+            height: 45%;
+            object-fit: fill;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+            height: 50%;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            color: rgb(247, 223, 11);
+            font-weight: 500;
+            margin-top: 85px;
+            margin-bottom: 2px;
+        }
+
+        .content p strong{
+            font-size: 14px;
+            color:  white;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+
+        /* Show overlay when card is hovered */
+        .project-card:hover {
+        transform: translateY(-5px); /* Moves the card upward */
+           box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 10px; /* Space between card and buttons */
+        }
+
+        .buttons a {
+            padding: 7px 15px;
+            width: 100px;
+            height: 50px;
+            background-color: rgba(0, 0, 0, 0.832);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .buttons a:hover {
+            background-color: white;
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            .project-container {
+                width: 100%; /* Stack cards on smaller screens */
+            }
+        }
+
+        .project-card a:hover {
+            background-color: black;
+            color: white;
+        }
+        
+        .project-heading h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-top: -80px;
+        }
+
+        .readme-info {
+        margin: -50px auto;
+        /* padding: 5px; */
+        max-width: 900px;
+        text-align: center;
+        background: linear-gradient(135deg, #f9f9f9, #ececec);
+        border: 1px solid #dcdcdc;
+        border-radius: 8px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: 'Arial', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+       }
+
+       .quote-container {
+            text-align: center;
+            border-radius: 12px;
+            background: rgb(0, 0, 0);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            max-width: 80%;
+            margin: -80px auto 0px;
+        }
+
+        /* Quote text styling */
+        .quote {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+            color: white;
+        }
+        
+        .skills-section {
+    text-align: center;
+    padding: 10px 20px;
+         }
+
+        .skills-section h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #444;
+        }
+
+        /* Skills Container */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        /* Individual Skill Card */
+        .skill-card {
+            background: transparent;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            width: 130px;
+            height: 130px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card img {
+            width: 64px;
+            height: 64px;
+            margin-top: -35px;
+            margin-bottom: 15px;
+            background: transparent;
+            border-radius: 50%;
+        }
+
+        .skill-card h4 {
+            font-size: 1.1em;
+            color: white;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* Hover Effect */
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+
+
+
+    </style>
+	<body class="is-preload">
+            <!-- Navbar -->
+    <div class="navbar">
+        <a href="#home" class="active">Home</a>
+        <a href="#about">About</a>
+        <div class="dropdown">
+            <a href="#regression">Projects</a>
+            <div class="dropdown-content">
+                <a href="#regression">Regression & Classification Projects</a>
+                <a href="#deeplearning">Deep Learning Projects</a>
+                <a href="#nlp">NLP Projects</a>
+                <a href="#timeseries">Time Series Project & WEB SCRAPING</a>
+                <a href="#sql">SQL Projects</a>
+                <a href="#dashboard">SQl-Tableau-Powerbi-Excel</a>
+            </div>
+        </div>
+        <a href="#skills">My Skills</a>
+    </div>
+
+		<!-- Header -->
+
+            <section id="header">
+                <div class="card" id="home">
+                    <!-- Image Section -->
+                    <div class="image-container">
+                        <img src="images/img3.jpg" alt="Your Name" class="profile-photo">
+                    </div>
+                    
+                    <!-- Text Content -->
+                    <div class="text-content">
+                        <header>
+                            <h2>Hello, I'm Lakshman Charuguntla</h2><br>
+                            <b>
+                               Data Scientist
+                            </b>
+                        </header>
+                        <footer>
+                            <a href="https://drive.google.com/file/d/11Fgk1wOIY0JC2qnuW55xgQcWFTq08tTD/view?usp=sharing" class="button scrolly" target="_blank">Resume</a>
+                        </footer>
+                    </div>
+                </div>
+            </section>
+            
+
+		<!-- First -->
+			<section id="about" class="main">
+				<header>
+                    <div class="card card-about">
+                        <!-- Profile Icon Section -->
+                        <div class="icon-container">
+                            <img src="icons8-about-me-100.png" alt="Profile Icon"> 
+                        </div>
+                
+                        <!-- About Me Text Section -->
+                        <div class="about-text-content">
+                            <h1><b>About Me</b></h1>
+                            <p>Hello! I’m a passionate and driven Data Scientist with a Bachelor’s degree in Computer Science. From a young age, I’ve been deeply fascinated by the power of data and its potential to solve real-world problems. My journey in the world of data science is fueled by an insatiable curiosity and a strong desire to push the boundaries of innovation.</p>
+                            <p>I thrive on using advanced analytical techniques and machine learning algorithms to unlock hidden insights from complex data sets. Whether it’s building predictive models, creating data-driven solutions, or experimenting with cutting-edge technologies, I find great enjoyment in the process of transforming data into actionable knowledge.</p>
+                            <p>Innovation is at the core of everything I do—whether it’s leveraging the latest tools or thinking outside the box to approach challenges. My goal is to always be learning, growing, and contributing to impactful projects that drive progress.</p>
+                        </div>
+                    </div>
+				</header>
+				<div class="content dark style1 featured" id="regression">
+					<div class="container">
+                    <div class="project-heading">
+                        <h1><b>REGRESSION & CLASSIFICATION PROJECTS</b></h1>
+                    </div>
+
+                        <div class="projects-cards">
+                            <div class="project-container">
+                            <!-- Project Card 1 -->
+                            <div class="project-card">
+                                <img src="images/car.webp" alt="CarPricePrediction Screenshot">
+                                <div class="content">
+                                    <h2>CarPricePrediction</h2>
+                                    <p><strong>This project leverages machine learning algorithms to accurately predict car prices based on key features such as make, model, year, fuel type and mileage specifications. By analyzing historical data and identifying patterns, the model provides valuable insights to users, empowering them to make informed purchasing decisions</strong></p>
+                                </div>
+
+                            </div>
+                            <div class="buttons">
+                                <a href="https://carpriceprediction-1-y02c.onrender.com/" target="_blank">App</a>
+                                <a href="https://github.com/Lakshman895/CarPricePrediction" target="_blank">Github</a>
+                            </div>
+                        </div>
+                    
+                            <!-- Project Card 2 -->
+                            <div class="project-container">
+                            <div class="project-card">
+                                <img src="images/medicine.PNG" alt="WeatherImageClassifier Screenshot">
+                                <div class="content">
+                                    <h2>MedicineRecommendationSystem</h2>
+                                    <p><strong>This project develops a machine learning model to predict diseases based on user-reported symptoms. The model then provides personalized recommendations for medication, dietary adjustments, exercise routines, and preventative measures to support users in managing their health</strong></p>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <a href="https://medicinerecommendationsystem.onrender.com/" target="_blank">App</a>
+                                <a href="https://github.com/Lakshman895/Medicine-Recommendation-System" target="_blank">Github</a>
+                            </div>
+                        </div>           
+                        </div>
+                    
+					</div>
+				</div>
+			</section>
+
+		<!-- Second -->
+			<section id="second" class="main">
+				<header>
+					<div class="readme-info">
+                        <p>
+                            NOTE: For comprehensive details about the all projects, including the underlying methodology, the technologies and models implemented, and the outcomes achieved, please refer to the README file available on my GitHub repository.</p>
+                    </div>
+				</header>
+				<div class="content dark style2" id="deeplearning">
+					<div class="container">
+						<div class="project-heading">
+                            <h1><b>DEEP LEARNING PROJECTS</b></h1>
+                        </div>
+    
+                            <div class="projects-cards">
+                                <div class="project-container">
+                                <!-- Project Card 1 -->
+                                <div class="project-card">
+                                    <img src="images/weather.webp" alt="WeatherImageClassifier">
+                                    <div class="content">
+                                        <h2>WeatherImageClassifier</h2>
+                                        <p><strong>This project uses deep learning models to classify images into 11 distinct weather types such as rain, frost, and rainbow. Built with state-of-the-art architectures like EfficientNetB7, ResNet, and InceptionResNetV2, the app provides high-accuracy predictions, detailed performance metrics, and an interactive interface.</strong></p>
+                                    </div>
+    
+                                </div>
+                                <div class="buttons">
+                                    <a href="https://weather-image-classification.onrender.com" target="_blank">App</a>
+                                    <a href="https://github.com/Lakshman895/Weather-Image-Classification" target="_blank">Github</a>
+                                </div>
+                            </div>
+                        
+                                <!-- Project Card 2 -->
+                                <div class="project-container">
+                                <div class="project-card">
+                                    <img src="images/movie.webp" alt="MovieRecommenderSystem">
+                                    <div class="content">
+                                        <h2>MovieRecommenderSystem</h2>
+                                        <p><strong>This project is a machine learning-based application designed to recommend movies to users based on their preferences. It leverages Natural Language Processing (NLP) and collaborative filtering techniques to analyze movie metadata, including cast, crew, and user interactions.</strong></p>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <a href="https://github.com/Lakshman895/Movie-Recommender-System" target="_blank">Github</a>
+                                </div>
+                            </div>           
+                            </div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Third -->
+			<section id="third" class="main">
+				<header>
+					<div class="quote-container">
+                        <p class="quote">"Data is like a faint light when you're lost in a dark room. Follow it, try to make sense of it, and you might actually know where you are and what's around you."</p>
+                
+                    </div>
+				</header>
+				<div class="content dark style3" id="nlp">
+					<div class="container">
+                        <div class="project-heading">
+                            <h1><b>NLP & TEXT ANALYSIS PROJECTS</b></h1>
+                        </div>
+    
+                            <div class="projects-cards">
+                                <div class="project-container">
+                                <!-- Project Card 1 -->
+                                <div class="project-card">
+                                    <img src="images/resume.webp" alt="CarPricePrediction Screenshot">
+                                    <div class="content">
+                                        <h2>Resume-Screening & Job-Recommendation System</h2>
+                                        <p><strong>This system automates resume screening, categorization, and job recommendations. It extracts key details (e.g., name, skills, education) from resumes uploaded in PDF or TXT formats and suggests jobs that match the candidate's profile using NLP techniques.</strong></p>
+                                    </div>
+    
+                                </div>
+                                <div class="buttons">
+                                    <a href="https://resume-screening-and-job-recommendation.onrender.com" target="_blank">App</a>
+                                    <a href="https://github.com/Lakshman895/Resume-Screening-and-Job-Recommendation" target="_blank">Github</a>
+                                </div>
+                            </div>
+                        
+                                <!-- Project Card 2 -->
+                            <div class="project-container">
+                                <div class="project-card">
+                                    <img src="images/recommendation.webp" alt="WeatherImageClassifier Screenshot">
+                                    <div class="content">
+                                        <h2>ProductRecommendation</h2>
+                                        <p><strong>This project is based on content-based-recommendation. The system leverages cosine similarity to recommend products based on user preferences by analyzing product features such as category, brand, price, ratings, and descriptions.</strong></p>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <a href="https://github.com/Lakshman895/Products-Recommendation-System" target="_blank">Github</a>
+                                </div>
+                            </div>    
+                            <!-- Project Card 3 -->
+                            <div class="project-container">
+                                <div class="project-card">
+                                    <img src="images/ats.webp" alt="WeatherImageClassifier Screenshot">
+                                    <div class="content">
+                                        <h2>ATS Tracking System</h2>
+                                        <p><strong>The ATS Tracking System uses AI to evaluate resumes against job descriptions, providing insights such as a match percentage, strengths, weaknesses, missing keywords, and improvement recommendations</strong></p>
+                                    </div>
+                                </div>
+                                <div class="buttons">
+                                    <a href="https://resume-ats-tracking.onrender.com" target="_blank">App</a>
+                                    <a href="https://github.com/Lakshman895/Resume-ATS-Tracking" target="_blank">Github</a>
+                                </div>
+                            </div>  
+
+                            </div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Fourth -->
+		
+			<section class="main">
+				<header>
+					<div class="container">
+                        <div class="quote-container">
+                            <p class="quote">"Torture the data and It will confess to anything"</p>
+                        </div>    
+					</div>
+				</header>
+				<div class="content style1 dark" id="timeseries">
+					<div class="container">
+                        <div class="project-heading">
+                            <h1><b>TIME SERIES PROJECT & WEB SCRAPING</b></h1>
+                        </div>
+    
+                            <div class="projects-cards">
+                                <div class="project-container">
+                                <!-- Project Card 1 -->
+                                <div class="project-card">
+                                    <img src="images/stock.PNG" alt="CarPricePrediction Screenshot">
+                                    <div class="content">
+                                        <h2>TeslaStockPrediction</h2>
+                                        <p><strong>This project predicts Tesla's stock prices using Long Short-Term Memory (LSTM) networks, designed for time-series forecasting. It leverages historical stock price data to forecast future stock prices. The model processes features such as Date, Open, High, Low, Close, and Volume.</strong></p>
+                                    </div>
+    
+                                </div>
+                                <div class="buttons">
+                                    <a href="https://github.com/Lakshman895/Tesla-Stock-Forecasting" target="_blank">Github</a>
+                                </div>
+                            </div>
+                                <!-- Project Card 2 -->
+                                <div class="project-container">
+                                    <div class="project-card">
+                                        <img src="images/british.webp" alt="MoodAnalysis">
+                                        <div class="content">
+                                            <h2>BritishAirwaysWebScraping</h2>
+                                            <p><strong>This project involves web scraping British Airways customer reviews using Python libraries such as BeautifulSoup and Scrapy. The extracted data includes customer feedback, ratings, and sentiments for further analysis.</strong></p>
+                                        </div>
+                                    </div>
+                                    <div class="buttons">
+                                        <a href="https://github.com/Lakshman895/British-Airways-Web-Scraping" target="_blank">Github</a>
+                                    </div>
+                                </div>  
+                
+				</div>
+			</section>
+
+
+
+		<!-- Fifth -->
+        <section id="second" class="main">
+            <header>
+                <div class="container">
+                    <div class="quote-container">
+                        <p class="quote">"Without data you're just another person with an opinion"</p>
+                    </div>    
+                </div>
+            </header>
+            <div class="content dark style2" id="sql">
+                <div class="container">
+                    <div class="project-heading">
+                        <h1><b>SQL PROJECTS</b></h1>
+                    </div>
+
+                        <div class="projects-cards">
+                            <div class="project-container">
+                            <!-- Project Card 1 -->
+                            <div class="project-card">
+                                <img src="images/election.webp" alt="Election Image">
+                                <div class="content">
+                                    <h2>LokhSabhaElectionsAnalysis</h2>
+                                    <p><strong>The project analyzes the Lok Sabha Election Results of India using SQL queries and relational database principles. It provides insights into constituency-wise, state-wise, and party-wise election outcomes, focusing on trends and voting patterns. The analysis is supported by detailed documentation, including SQL queries & results.</strong></p>
+                                </div>
+
+                            </div>
+                            <div class="buttons">
+                                <a href="https://github.com/Lakshman895/SQL_Lokh_Sabha_Election" target="_blank">Github</a>
+                            </div>
+                        </div>
+                    
+                            <!-- Project Card 2 -->
+                            <div class="project-container">
+                            <div class="project-card">
+                                <img src="images/layoffs.PNG" alt="MoodAnalysis">
+                                <div class="content">
+                                    <h2>WorldLayoffsAnalysis</h2>
+                                    <p><strong>This project analyzes global layoffs data using SQL, focusing on data cleaning for accuracy and consistency, and exploratory data analysis (EDA) to reveal trends across industries, companies, and regions.</strong></p>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <a href="https://github.com/Lakshman895/SQL-World-Layoffs" target="_blank">Github</a>
+                            </div>
+                        </div>           
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sixth -->
+        <section id="third" class="main">
+            <header>
+                <div class="quote-container">
+                    <p class="quote">"Data is like a faint light when you're lost in a dark room. Follow it, try to make sense of it, and you might actually know where you are and what's around you."</p>
+            
+                </div>
+            </header>
+            <div class="content dark style3" id="dashboard">
+                <div class="container">
+                    <div class="project-heading">
+                        <h1><b>SQL & POWERBI & TABLEAU & EXCEL PROJECTS</b></h1>
+                    </div>
+
+                        <div class="projects-cards">
+                            <div class="project-container">
+                            <!-- Project Card 1 -->
+                            <div class="project-card">
+                                <img src="images/pizza.webp" alt="CarPricePrediction Screenshot">
+                                <div class="content">
+                                    <h2>PizzaSalesAnalysis</h2>
+                                    <p><strong>This project analyzed a pizza sales dataset using SQL and Tableau to extract actionable business insights. The analysis included querying the data for revenue trends, top-selling pizzas, order patterns, and cumulative sales, presented in an interactive Tableau dashboard and a detailed report.</strong></p>
+                                </div>
+
+                            </div>
+                            <div class="buttons">
+                                <a href="https://github.com/Lakshman895/Pizza-Sales-Analysis-SQL-Tableau/blob/main/report.pdf" target="_blank">SQLReport</a>
+                                <a href="https://public.tableau.com/app/profile/c.lakshman/viz/Best_WorstSellerPizza_17380442453690/Home?publish=yes" target="_blank">Dashboard</a>
+                                <a href="https://github.com/Lakshman895/Pizza-Sales-Analysis-SQL-Tableau" target="_blank">Github</a>
+                            </div>
+                        </div>
+                    
+                            <!-- Project Card 2 -->
+                        <div class="project-container">
+                            <div class="project-card">
+                                <img src="images/road.webp" alt="RoadAccidentAnalysis Screenshot">
+                                <div class="content">
+                                    <h2>RoadAccidentAnalysis</h2>
+                                    <p><strong>This project involves a comprehensive analysis of road accident data to uncover key patterns, trends, and contributing factors using Power BI and SQL. The objective is to identify actionable insights that can improve road safety and inform decision-making.</strong></p>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <a href="https://github.com/Lakshman895/Road-Accident-Sql-PowerBI/blob/main/documentation/report.pdf" target="_blank">SQLReport</a>
+                                <a href=" https://app.powerbi.com/view?r=eyJrIjoiNmEzYjE1YzQtZTEzMi00MjUzLWIwYmQtMWY2ZWM1NTI4MzcwIiwidCI6Ijc5ZjkxNWQ3LWJiNzYtNDZjYy1hY2RiLTY4YTRmZjBhZWRkYiJ9" target="_blank">Dashboard</a>
+                                <a href="https://github.com/Lakshman895/Road-Accident-Sql-PowerBI" target="_blank">Github</a>
+                            </div>
+                        </div>    
+                        <!-- Project Card 3 -->
+                        <div class="project-container">
+                            <div class="project-card">
+                                <img src="images/hr.PNG" alt="WeatherImageClassifier Screenshot">
+                                <div class="content">
+                                    <h2>HRAnalyticsDashboard</h2>
+                                    <p><strong>The HR Analytics Dashboard is designed to provide comprehensive insights into employee attrition within an organization. Leveraging Tableau for interactive visualizations, it enables HR teams to explore key metrics and make data-driven decisions. The dashboard highlights trends, demographic analysis.</strong></p>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <a href="https://public.tableau.com/app/profile/c.lakshman/viz/tablueproject1_17379793202340/HRdata?publish=yes" target="_blank">Dashboard</a>
+                                <a href="https://github.com/Lakshman895/HR-Analytics-Tableau" target="_blank">Github</a>
+
+                            </div>
+                        </div>
+
+                        <div class="project-container">
+                            <div class="project-card">
+                                <img src="images/coffee.webp" alt="WeatherImageClassifier Screenshot">
+                                <div class="content">
+                                    <h2>CoffeeSalesAnalysis</h2>
+                                    <p><strong>The Coffee Shop Sales Dashboard is a Power BI tool that leverages MySQL for data extraction and transformation. It offers actionable insights into sales performance by location, product categories, and time trends, helping businesses identify top products, peak periods, and growth opportunities for better decision-making.</strong></p>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <a href="https://github.com/Lakshman895/Coffee-Sales-SQL-Dashboard/blob/main/sql_queries.sql" target="_blank">SQLQueries</a>
+                                <a href="https://app.powerbi.com/view?r=eyJrIjoiODM1NGFmY2QtNmQ5MC00Zjk4LWEyZTEtNmZkMjRkZGE1NmU4IiwidCI6Ijc5ZjkxNWQ3LWJiNzYtNDZjYy1hY2RiLTY4YTRmZjBhZWRkYiJ9" target="_blank">Dashboard</a>
+                                <a href="https://github.com/Lakshman895/Coffee-Sales-SQL-Dashboard" target="_blank">Github</a>
+                            </div>
+                        </div>
+
+                        <div class="project-container">
+                            <div class="project-card">
+                                <img src="images/bank.webp" alt="WeatherImageClassifier Screenshot">
+                                <div class="content">
+                                    <h2>BankLoanAnalysis</h2>
+                                    <p><strong>A dynamic and interactive Excel-based dashboard designed for comprehensive analysis of bank loan applications. It features key performance metrics and detailed visualizations for tracking trends, segmentation, and insights into loan data.</strong></p>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <a href="https://github.com/Lakshman895/Bank-Loan-Excel-Dashboard/blob/main/Dashboard.pdf" target="_blank">Dashboard</a>
+                                <a href="https://github.com/Lakshman895/Bank-Loan-Excel-Dashboard" target="_blank">Github</a>
+                            </div>
+                        </div>
+
+                        <div class="project-container">
+                            <div class="project-card">
+                                <img src="images/hospital.webp" alt="WeatherImageClassifier Screenshot">
+                                <div class="content">
+                                    <h2>HospitalEmergencyAnalysis</h2>
+                                    <p><strong>A Power BI-based hospital dashboard designed for comprehensive analysis and visualization of hospital data. It provides valuable insights to support effective decision-making and operational efficiency, enabling better resource management, performance tracking, and overall healthcare improvements.</strong></p>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <a href="https://app.powerbi.com/view?r=eyJrIjoiZjY0Zjc5N2YtZWI1MC00ZjdmLTg2NmMtMmQ2ODFmYmE2NzdiIiwidCI6Ijc5ZjkxNWQ3LWJiNzYtNDZjYy1hY2RiLTY4YTRmZjBhZWRkYiJ9" target="_blank">Dashboard</a>
+                                <a href="https://github.com/Lakshman895/Hospital-Dashboard-powerbi" target="_blank">Github</a>
+                            </div>
+                        </div>
+                        
+                        </div>
+
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="second" class="main">
+            <header>
+                <div class="container">
+                    <div class="quote-container">
+                        <p class="quote">"You can have data without information, but you cannot have information without data."</p>
+                    </div>    
+                </div>
+            </header>
+            <div class="content dark style2" id="skills">
+                <div class="container">
+                    <div class="project-heading">
+                        <h1><b>My Skills</b></h1>
+                    </div>
+                    <section class="skills-section">
+                        <div class="skills-container">
+                            <div class="skill-card">
+                                <h4>Python</h4>
+                                <img src="images/python.png" alt="Python Icon">
+                                
+                            </div>
+                            <div class="skill-card">
+                                <h4>NumPy</h4>
+                                <img src="images/numpy.png" alt="NumPy Icon">
+                             
+                            </div>
+                            <div class="skill-card">
+                                <h4>Pandas</h4>
+                                <img src="images/pandas.png" alt="Pandas Icon">
+                                
+                            </div>
+                            <div class="skill-card">
+                                <h4>Matplotlib</h4>
+                                <img src="images/matplotlib.png" alt="Matplotlib Icon">
+                                
+                            </div>
+                            <div class="skill-card">
+                                <h4>Seaborn</h4>
+                                <img src="images/seaborn-1.svg" alt="Matplotlib Icon">
+                                
+                            </div>
+                            <div class="skill-card" style="width: 150px;">
+                                <h4>Scikit-learn</h4>
+                                <img src="images/scikit-learn.png" alt="Scikit-learn Icon">
+                             
+                            </div>
+                            <div class="skill-card" style="width: 150px;">
+                                <h4>TensorFlow</h4>
+                                <img src="images/tensorflow.png" alt="TensorFlow Icon">
+                               
+                            </div>
+                            <div class="skill-card">
+                                <h4>NLP</h4>
+                                <img src="images/nlp.png" alt="TensorFlow Icon">
+                               
+                            </div>
+                            <div class="skill-card" style="width: 160px;">
+                                <h4>DeepLearning</h4>
+                                <img src="images/deeplearning.png" alt="TensorFlow Icon">
+                               
+                            </div>
+                            <div class="skill-card">
+                                <h4>SQL</h4>
+                                <img src="images/sql.png" alt="TensorFlow Icon">
+                               
+                            </div>
+                            <div class="skill-card">
+                                <h4>PowerBI</h4>
+                                <img src="images/powerbi.png" alt="TensorFlow Icon">
+                               
+                            </div>
+                            <div class="skill-card">
+                                <h4>Tableau</h4>
+                                <img src="images/tableau.png" alt="TensorFlow Icon">
+                               
+                            </div>
+                            <div class="skill-card">
+                                <h4>Excel</h4>
+                                <img src="images/excel.png" alt="TensorFlow Icon">
+                               
+                            </div>
+                            <div class="skill-card" style="width: 160px;">
+                                <h4>WebScraping</h4>
+                                <img src="images/web scraping.png" alt="TensorFlow Icon">
+                               
+                            </div>
+                        </div>
+                    </section>
+                        
+                           
+        
+                </div>
+                </div>
+            </div>
+        </section>
+
+
+			
+		<!-- Footer -->
+                    <section id="footer">
+                        <ul class="icons">
+                            <li><a href="https://www.linkedin.com/in/lakshmancharuguntla/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+                            <li><a href="https://github.com/Lakshman895" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+                        </ul>
+                    </section>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
